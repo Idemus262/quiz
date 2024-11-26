@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | Quiz2</title>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=340 height=680 tabindex="-1" style="width: 340px; height: 680px; background: #171617"></canvas>
+    <script src="Build/main2.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/main2.data",
+        frameworkUrl: "Build/main2.framework.js",
+        codeUrl: "Build/main2.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Quiz2",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then((unityInstance) => {
+      	window.unityInstance = unityInstance;
+      });
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+
+    <script>
+      
+      var firebaseConfig = {
+        apiKey: "AIzaSyBedf_iljlyNwIRiGaSVtdP7e6mJh19TwQ",
+        authDomain: "tgapp-ce63d.firebaseapp.com",
+        databaseURL: "https://tgapp-ce63d-default-rtdb.firebaseio.com",
+        projectId: "tgapp-ce63d",
+        storageBucket: "tgapp-ce63d.firebasestorage.app",
+        messagingSenderId: "839843410128",
+        appId: "1:839843410128:web:2dd8afb8f85a4a02d1eed5",
+        measurementId: "G-LG850RTR20"
+      };
+    
+      firebase.initializeApp(firebaseConfig);
+
+    </script>
+  </body>
+</html>
